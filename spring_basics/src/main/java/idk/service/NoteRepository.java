@@ -1,41 +1,46 @@
 package idk.service;
 
 import idk.entity.Note;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
+@Slf4j
 @Component
-public class NoteRepository implements NoteService {
+public class NoteRepository  {
 
-    private final Set<Long> ids = new HashSet<>();
     private final List<Note> notes = new ArrayList<>();
 
-    @Override
+
     public List<Note> listAll() {
         return notes;
     }
 
-    @Override
     public Note add(Note note) {
-        if (ids.contains(note.getId()))
-            throw new RuntimeException("Duplicate id");
-
         notes.add(note);
         return note;
     }
 
-    @Override
-    public void deleteById(long id) {
-        notes.remove(getById(id));
+    public boolean deleteById(long id) {
+        return notes.remove(getById(id));
     }
 
-    @Override
-    public void update(Note note) {
-        notes.replaceAll((note1) -> Objects.equals(note1.getId(), note.getId()) ? note : note1);
+    public boolean update(Note note) {
+        AtomicBoolean occurs = new AtomicBoolean(false);
+        notes.replaceAll((note1) -> {
+            if (Objects.equals(note1.getId(), note.getId())) {
+                occurs.set(true);
+                return note;
+            } else {
+                return note1;
+            }
+        });
+
+        return occurs.get();
     }
 
-    @Override
     public Note getById(long id) {
         for (Note note : notes) {
             if (note.getId() == id) {
