@@ -4,12 +4,14 @@ import idk.entity.Note;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @Slf4j
 @Component
-public class NoteRepository  {
+public class NoteRepository {
 
     private final List<Note> notes = new ArrayList<>();
 

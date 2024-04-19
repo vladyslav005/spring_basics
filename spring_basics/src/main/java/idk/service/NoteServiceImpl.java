@@ -4,12 +4,10 @@ import idk.entity.Note;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.util.List;
-import java.util.UUID;
 
 @Slf4j
 @Service
@@ -19,6 +17,16 @@ public class NoteServiceImpl implements NoteService {
 
     @Autowired
     private NoteRepository noteRepository;
+
+    @PostConstruct
+    public void init() {
+        for (int i = 0; i < 10; i++) {
+            add(new Note(null, "TITLE " + i, "content " + i));
+        }
+
+        deleteById(noteRepository.listAll().get(0).getId());
+        System.out.println(noteRepository.listAll());
+    }
 
 
     @Override

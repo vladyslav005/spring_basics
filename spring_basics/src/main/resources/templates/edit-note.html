@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div>
+        <form action="edit" method="POST">
+
+            <label>
+                <input type="text" name="title" th:value="${note.getTitle()}">
+            </label>
+            <br>
+            <label>
+                <textarea name="content" th:text="${note.getContent()}"></textarea>
+            </label>
+            <br>
+            <input type="submit" value="Submit">
+
+            <label>
+                <input name="id" th:value="${note.getId()}" hidden="hidden">
+            </label>
+
+        </form>
+    </div>
+
+</body>
+</html>

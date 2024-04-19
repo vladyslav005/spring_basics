@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <form action="edit" method="GET">
+
+        <label> id :
+            <input type="text" name="id">
+        </label>
+        <input type="submit" value="Submit">
+
+    </form>
+</div>
+
+
+    <div>
+        <h1>Notes list</h1>
+        <div class="note" th:each="note : ${notes}">
+            <h3 th:text="${note.getTitle()} +  ' | ID: ' +  ${note.getId()}"></h3>
+            <p th:text="${note.getContent()}"></p>
+            <hr>
+        </div>
+    </div>
+
+
+</body>
+</html>
