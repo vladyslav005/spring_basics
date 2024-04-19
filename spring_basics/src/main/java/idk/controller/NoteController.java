@@ -4,9 +4,11 @@ package idk.controller;
 import idk.dto.UpdateRequest;
 import idk.entity.Note;
 import idk.service.NoteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -25,11 +27,11 @@ public class NoteController {
 
 
 
-    @GetMapping("/delete/{id}")
-    public String deleteNote(Note note, @PathVariable String id) {
-        long longId = Long.parseLong(id);
-        System.out.println(longId);
-        noteService.deleteById(longId);
+    @GetMapping("/delete")
+    public String deleteNote(@RequestParam long id) {
+//        long longId = Long.parseLong(id);
+//        System.out.println(longId);
+        noteService.deleteById(id);
         return "redirect:/notes/list";
     }
 
@@ -44,7 +46,7 @@ public class NoteController {
 
 
     @PostMapping("/edit")
-    public String updateNote(UpdateRequest note) {
+    public String updateNote(@Valid UpdateRequest note) {
 
         noteService.update(new Note(note.getId(), note.getTitle(), note.getContent()));
         return "redirect:/notes/list";
