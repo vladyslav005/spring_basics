@@ -8,33 +8,56 @@
 <div>
     <form action="edit" method="GET">
 
-        <label> id :
-            <input type="text" name="id">
+        <label>
+            <input placeholder="ID" type="text" name="id">
         </label>
         <input type="submit" value="EDIT">
 
     </form>
 
-    <br>
+    <hr>
+
     <form action="delete" method="GET">
 
-        <label> id :
-            <input type="text" name="id">
+        <label>
+            <input placeholder="ID" type="text" name="id">
         </label>
         <input type="submit" value="DELETE">
 
     </form>
+
+    <hr>
+
+    <form action="add" method="POST">
+
+        <label>
+            <input placeholder="Title" type="text" name="title">
+        </label>
+        <input type="submit" value="ADD">
+
+        <br>
+        <br>
+
+        <label>
+            <textarea placeholder="Content"  name="content"></textarea>
+        </label>
+
+        <br>
+    </form>
+
+
 </div>
 
+<hr>
 
-    <div>
-        <h1>Notes list</h1>
-        <div class="note" th:each="note : ${notes}">
-            <h3 th:text="${note.getTitle()} +  ' | ID: ' +  ${note.getId()}"></h3>
-            <p th:text="${note.getContent()}"></p>
-            <hr>
-        </div>
+<div>
+    <h1>Notes list</h1>
+    <div class="note" th:each="note : ${notes}">
+        <h3 th:text="${note.getTitle()} +  ' | ID: ' +  ${note.getId()}"></h3>
+        <p th:text="${note.getContent()}"></p>
+        <hr>
     </div>
+</div>
 
 
 </body>

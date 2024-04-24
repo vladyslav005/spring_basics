@@ -1,0 +1,5 @@
+CREATE TABLE Note (
+  id BIGINT PRIMARY KEY,
+  title VARCHAR(50) NOT NULL,
+  content VARCHAR(255) NOT NULL
+);
