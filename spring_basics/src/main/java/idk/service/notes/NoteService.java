@@ -1,4 +1,4 @@
-package idk.service;
+package idk.service.notes;
 
 import idk.entity.Note;
 

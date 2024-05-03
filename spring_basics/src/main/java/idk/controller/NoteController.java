@@ -4,14 +4,12 @@ package idk.controller;
 import idk.dto.AddNoteRequest;
 import idk.dto.UpdateRequest;
 import idk.entity.Note;
-import idk.service.NoteService;
+import idk.service.notes.NoteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/notes")
@@ -25,8 +23,6 @@ public class NoteController {
         model.addAttribute("notes", noteService.listAll());
         return "list-all";
     }
-
-
 
     @GetMapping("/delete")
     public String deleteNote(@RequestParam long id) {

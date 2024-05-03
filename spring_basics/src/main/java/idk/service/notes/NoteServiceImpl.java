@@ -1,16 +1,17 @@
-package idk.service;
+package idk.service.notes;
 
 import idk.entity.Note;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Slf4j
 @Service
+@Transactional
 public class NoteServiceImpl implements NoteService {
 
     private final SecureRandom secureRandom = new SecureRandom();
