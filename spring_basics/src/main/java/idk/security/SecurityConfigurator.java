@@ -38,7 +38,6 @@ public class SecurityConfigurator {
         return new BCryptPasswordEncoder();
     }
 
-
     @Bean
     public AuthenticationManager authenticationManager() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
@@ -54,13 +53,13 @@ public class SecurityConfigurator {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(req -> {
-                        req.requestMatchers(HttpMethod.GET, "/**").permitAll();
-                        req.requestMatchers(HttpMethod.POST, "/**").authenticated();
                         req.requestMatchers("/auth/**").permitAll();
                         req.anyRequest().authenticated();
                 })
-
-                .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class)
+                .formLogin(Customizer.withDefaults())
+//                .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
+
+
 }
