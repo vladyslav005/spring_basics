@@ -27,7 +27,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public Note add(Note note) {
-        note.setId(Math.abs(secureRandom.nextLong()));
+        note.setId((long) Math.abs(secureRandom.nextInt()));
         return noteRepository.save(note);
     }
 

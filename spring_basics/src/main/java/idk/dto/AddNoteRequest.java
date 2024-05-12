@@ -8,8 +8,6 @@ import lombok.Data;
 @Data
 public class AddNoteRequest {
 
-    private Long id;
-
     @NotBlank
     @Size(min = 1, max = 50)
     @NotNull

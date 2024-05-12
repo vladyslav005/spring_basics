@@ -13,8 +13,6 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class UpdateRequest {
 
-    private Long id;
-
     @NotBlank @Size(min = 1, max = 50)
     @NotNull
     private String title;

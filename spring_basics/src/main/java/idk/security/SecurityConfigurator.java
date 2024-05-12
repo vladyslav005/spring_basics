@@ -54,8 +54,11 @@ public class SecurityConfigurator {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(req -> {
                         req.requestMatchers("/auth/**").permitAll();
-                        req.anyRequest().authenticated();
+//                        req.anyRequest().authenticated();
+                        req.anyRequest().permitAll();
+
                 })
+
                 .formLogin(Customizer.withDefaults())
 //                .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
