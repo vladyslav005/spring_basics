@@ -5,9 +5,7 @@ import idk.entity.Role;
 import idk.entity.RoleEnum;
 import idk.entity.User;
 import idk.service.user.UserRepository;
-import org.flywaydb.core.Flyway;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +19,11 @@ import java.util.List;
 @Configuration
 public class Application implements WebMvcConfigurer {
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+    @Autowired
+    UserRepository userRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
@@ -33,16 +36,9 @@ public class Application implements WebMvcConfigurer {
 //        init();
     }
 
-
-    @Autowired
-    PasswordEncoder passwordEncoder;
-
-    @Autowired
-    UserRepository userRepository;
-
     private void init() {
         Role admin = new Role(null, RoleEnum.ROLE_USER, null);
-        User adminUser = new User(null, "admin" , "idk@gmail.com", passwordEncoder.encode("admin"),  List.of(admin));
+        User adminUser = new User(null, "admin", "idk@gmail.com", passwordEncoder.encode("admin"), List.of(admin));
         userRepository.save(adminUser);
     }
 

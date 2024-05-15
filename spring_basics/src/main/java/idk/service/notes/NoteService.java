@@ -2,7 +2,6 @@ package idk.service.notes;
 
 import idk.entity.Note;
 
-import java.rmi.server.UID;
 import java.util.List;
 
 public interface NoteService {

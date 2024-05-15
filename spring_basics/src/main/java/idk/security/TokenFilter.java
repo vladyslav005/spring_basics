@@ -1,7 +1,6 @@
 package idk.security;
 
 import idk.security.token.JwtUtils;
-import idk.security.user.UserDetailsImpl;
 import idk.security.user.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -35,7 +34,7 @@ public class TokenFilter extends OncePerRequestFilter {
             if (request.getHeader("Authorization") != null) {
                 String token = request.getHeader("Authorization").substring(7);
 
-                if (jwtUtils.validateJwtToken(token) ) {
+                if (jwtUtils.validateJwtToken(token)) {
                     String username = jwtUtils.getUserNameFromJwtToken(token);
                     System.out.println(username);
                     UserDetails userDetails = userDetailsService.loadUserByUsername(username);
@@ -48,9 +47,7 @@ public class TokenFilter extends OncePerRequestFilter {
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             }
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new ServletException(e);
         }
 

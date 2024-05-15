@@ -8,11 +8,8 @@ import idk.service.notes.NoteService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.rmi.server.UID;
 import java.util.List;
 
 @RestController
@@ -30,7 +27,7 @@ public class NoteController {
 
     @PostMapping
     public Note addNote(@Valid @RequestBody AddNoteRequest addNoteRequest) {
-        Note newNote =  new Note(null, addNoteRequest.getTitle(), addNoteRequest.getContent());
+        Note newNote = new Note(null, addNoteRequest.getTitle(), addNoteRequest.getContent());
         noteService.add(newNote);
 
         return newNote;

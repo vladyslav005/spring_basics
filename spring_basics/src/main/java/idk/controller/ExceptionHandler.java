@@ -17,9 +17,9 @@ public class ExceptionHandler extends AbstractHandlerExceptionResolver {
             HttpServletResponse response,
             Object handler, Exception ex) {
 
-        ModelAndView modelAndView =  new ModelAndView("exception");
+        ModelAndView modelAndView = new ModelAndView("exception");
         modelAndView.getModel().put("message", ex.getMessage() + " Caused by: " +
-                (ex.getCause() != null ? ex.getCause().getMessage() : ex.getMessage() ));
+                (ex.getCause() != null ? ex.getCause().getMessage() : ex.getMessage()));
 
         return modelAndView;
     }

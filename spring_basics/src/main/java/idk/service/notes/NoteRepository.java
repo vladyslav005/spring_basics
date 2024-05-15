@@ -11,9 +11,13 @@ import java.util.List;
 public interface NoteRepository extends JpaRepository<Note, Long> {
 
     Note findByTitle(String title);
+
     Note findById(long id);
+
     void deleteById(long id);
+
     Note save(@NonNull Note note);
+
     List<Note> findAll();
 
 

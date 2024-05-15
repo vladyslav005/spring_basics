@@ -1,6 +1,5 @@
 package idk.dto;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -13,10 +12,12 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class UpdateRequest {
 
-    @NotBlank @Size(min = 1, max = 50)
+    @NotBlank
+    @Size(min = 1, max = 50)
     @NotNull
     private String title;
-    @NotBlank @Size(min = 1, max = 255)
+    @NotBlank
+    @Size(min = 1, max = 255)
     @NotNull
     private String content;
 }

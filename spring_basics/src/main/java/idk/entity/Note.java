@@ -11,8 +11,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.rmi.server.UID;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

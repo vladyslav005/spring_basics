@@ -12,7 +12,8 @@ public class AddNoteRequest {
     @Size(min = 1, max = 50)
     @NotNull
     private String title;
-    @NotBlank @Size(min = 1, max = 255)
+    @NotBlank
+    @Size(min = 1, max = 255)
     @NotNull
     private String content;
 }
