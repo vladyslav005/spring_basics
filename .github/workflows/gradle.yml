@@ -35,6 +35,10 @@ jobs:
 
     - name: Build with Gradle Wrapper
       run: cd ./spring_basics; ./gradlew build
+
+    - name: Tests with Gradle Wrapper
+      run: cd ./spring_basics; ./gradlew test
+      
     
 
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
