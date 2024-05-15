@@ -10,7 +10,7 @@ class NoteServiceImplTest {
 
     @Test
     void saveNote() {
-        assertTrue(true);
+        assertTrue(false);
     }
 
 }
